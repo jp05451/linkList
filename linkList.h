@@ -99,7 +99,7 @@ public:
         {
             beginNode->add(pushData);
         }
-        size++;
+        Size++;
     }
     void pop(T popData)
     {
@@ -111,17 +111,23 @@ public:
         {
             if (beginNode->remove(popData))
             {
-                size--;
+                Size--;
             }
         }
     }
     NODE *operator[](size_t pos)
     {
-        if (pos >= size)
+        if (pos >= Size)
         {
-            return nullptr;
+            cout << "out of range" << endl;
+            return beginNode->indexNode(0,Size-1);
         }
         return beginNode->indexNode(0, pos);
+    }
+
+    size_t size()
+    {
+        return Size;
     }
     ~LinkList()
     {
@@ -135,5 +141,5 @@ public:
 
 private:
     NODE *beginNode = nullptr;
-    size_t size = 0;
+    size_t Size = 0;
 };
